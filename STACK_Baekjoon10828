@@ -1,0 +1,85 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+// #include <ctype.h> 
+#include "stack.h"
+
+void main(){
+	Stack st; Sinit(&st);
+	int num;
+	char command[10000];
+	char c_buffer[5]; 
+	int i, j, k;
+	int len; 
+	int idx; 
+	Data tempdata;
+
+	scanf("%d", &num);
+	getchar();          // 그다음 gets가 있을때에는 엔터키를 인식못하니까 getchar 넣어줘야 함.
+
+	for (i = 0; i < num; i++)
+	{
+		gets(command);
+		len = strlen(command);
+		if (!strncmp(command,"push",4)) // push라면
+		{
+			k = 0;
+			memset(c_buffer, NULL, len);             // 행복한 함수 memset (ptr, value to initialize, length)
+
+			for (j = 5; command[j] != '\0'; j++)
+			{
+				c_buffer[k++] = command[j];
+			}
+
+			tempdata = atoi(c_buffer);
+			//printf("%d\n", tempdata);
+			Push(&st, tempdata);
+		}
+		/*
+		if (strcmp(command,"push",4) == 0)
+		{
+			printf("asdf\n");
+			idx = 0;
+
+			for (i = 0; i <= len; i++)
+			{
+				if (isdigit(command[i]))
+				{
+					c_buffer[idx++] = command[i];
+				}
+			}
+			printf("%c", c_buffer[0]);
+			//tempdata = atoi(c_buffer);
+			//printf("%d", tempdata);
+			//Push(&st, tempdata);
+			                        // printf("this is push\n");
+			
+			오류가 발생하는 지점
+			//buffer = &command[5];
+			//td = atoi(buffer);
+			//Push(&st, td);
+			*/	
+
+		else if (strcmp(command, "pop") == 0)
+		{
+			Pop(&st);
+		}
+		else if (strcmp(command, "size") == 0)
+		{
+			Size(&st);
+		}
+		else if (strcmp(command, "empty") == 0)
+		{
+			Empty(&st);
+		}
+		else if (strcmp(command, "top") == 0)
+		{
+			Top(&st);
+		}
+		else
+		{
+			puts("Wrong command!");
+		}
+	}
+}
