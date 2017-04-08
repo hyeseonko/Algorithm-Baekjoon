@@ -1,0 +1,173 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+//#define TRUE 1
+//#define FALSE 0
+
+typedef int Data; //Data의 자료형이 나중에 바뀔 것을 대비하여 이 문장하나만 바꿔도 되니까.
+
+typedef struct node {
+	Data data;
+	struct node* next;
+}Node;
+
+typedef struct {
+	Node* front;
+	Node *rear;
+	int qcount;
+}Queue;
+
+
+/* Queue을 초기화함 */
+void Qinit(Queue *pq);
+
+/* push X를 입력하면 넣어짐 */
+void Push(Queue *pq, Data data);
+
+/* pop을 입력하면 그 수 출력하고 정수가 없으면 -1 출력*/
+void Pop(Queue *pq);
+
+/* 큐에 들어있는 정수 갯수 출력*/
+void Size(Queue *pq);
+
+/* 비어있으면 1 출력, 아니면 0 출력*/
+void Empty(Queue *pq);
+
+/* 제일 앞에 있는 있는 정수 출력, 없으면 -1 출력 */
+void Front(Queue *pq);
+
+/* 제일 뒤에 있는 있는 정수 출력, 없으면 -1 출력 */
+void Back(Queue *pq);
+
+main() {
+
+	Queue q; Qinit(&q);
+	int num;
+	char command[10000];
+	char c_buffer[5];
+	int i = 0;
+	int j, k;
+	int len;
+	Data tempdata;
+
+	scanf("%d", &num);
+	getchar();          // 그다음 gets가 있을때에는 엔터키를 인식못하니까 getchar 넣어줘야 함.
+
+	while(i!=num)
+	{
+	//	fflush(stdin);
+		gets(command);
+		len = strlen(command);
+		if (!strncmp(command, "push", 4)) // push라면
+		{
+			k = 0;
+			memset(c_buffer, NULL, len);  // 행복한 함수 memset (ptr, value to initialize, length)
+
+			for (j = 5; command[j] != '\0'; j++)
+			{
+				c_buffer[k++] = command[j];
+			}
+
+			tempdata = atoi(c_buffer);
+			Push(&q, tempdata);
+		}
+	
+		else if (strcmp(command, "pop") == 0)
+		{
+			Pop(&q);
+		}
+		else if (strcmp(command, "size") == 0)
+		{
+			Size(&q);
+		}
+		else if (strcmp(command, "empty") == 0)
+		{
+			Empty(&q);
+		}
+		else if (strcmp(command, "front") == 0)
+		{
+			Front(&q);
+		}
+		else if (strcmp(command, "back") == 0)
+		{
+			Back(&q);
+		}
+		else
+		{
+			puts("Wrong command!");
+		}
+		i++;
+	}
+}
+
+
+void Qinit(Queue *pq)
+{
+	pq->front = NULL;
+	pq->rear = NULL;
+	pq->qcount = 0;
+}
+
+void Push(Queue *pq, Data data) {
+	Node *newnode = (Node*)malloc(sizeof(Node));  // create node which to be added.
+	newnode->data = data;
+	newnode->next = NULL;
+
+	if (pq->qcount == 0){      // if the queue is empty then front = rear = newnode
+		pq->front = newnode;
+		pq->rear = newnode;
+	}
+	else {                     
+		pq->rear->next = newnode;
+		pq->rear = newnode;
+	}
+	pq->qcount++;
+}
+
+void Pop(Queue *pq) {
+	Node *delnode;      // NODE to be removed 
+	Data *deldata;      // DATA to be deleted
+	if (pq->qcount == 0)
+	{
+		puts("-1");
+	}
+	else {
+		delnode = pq->front;
+		deldata = delnode->data;
+		pq->front = pq->front->next;
+		pq->qcount--;
+
+		free(delnode); 
+		printf("%d\n", deldata);
+	}
+}
+
+void Size(Queue *pq) {
+	printf("%d\n", pq->qcount);
+}
+
+void Empty(Queue *pq) {
+
+	if (pq->qcount == 0) puts("1");
+	else puts("0");
+}
+
+void Front(Queue *pq) {
+	if (pq->qcount == 0) {
+		puts("-1"); 
+	}
+	else {
+		printf("%d\n", pq->front->data);
+	}
+}
+
+void Back(Queue *pq){
+	if (pq->qcount == 0) {
+		puts("-1");
+	}
+	else {
+		printf("%d\n", pq->rear->data);
+	}
+}
