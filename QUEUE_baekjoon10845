@@ -6,7 +6,7 @@
 //#define TRUE 1
 //#define FALSE 0
 
-typedef int Data; //DataÀÇ ÀÚ·áÇüÀÌ ³ªÁß¿¡ ¹Ù²ğ °ÍÀ» ´ëºñÇÏ¿© ÀÌ ¹®ÀåÇÏ³ª¸¸ ¹Ù²ãµµ µÇ´Ï±î.
+typedef int Data; //Dataì˜ ìë£Œí˜•ì´ ë‚˜ì¤‘ì— ë°”ë€” ê²ƒì„ ëŒ€ë¹„í•˜ì—¬ ì´ ë¬¸ì¥í•˜ë‚˜ë§Œ ë°”ê¿”ë„ ë˜ë‹ˆê¹Œ.
 
 typedef struct node {
 	Data data;
@@ -20,25 +20,25 @@ typedef struct {
 }Queue;
 
 
-/* QueueÀ» ÃÊ±âÈ­ÇÔ */
+/* Queueì„ ì´ˆê¸°í™”í•¨ */
 void Qinit(Queue *pq);
 
-/* push X¸¦ ÀÔ·ÂÇÏ¸é ³Ö¾îÁü */
+/* push Xë¥¼ ì…ë ¥í•˜ë©´ ë„£ì–´ì§ */
 void Push(Queue *pq, Data data);
 
-/* popÀ» ÀÔ·ÂÇÏ¸é ±× ¼ö Ãâ·ÂÇÏ°í Á¤¼ö°¡ ¾øÀ¸¸é -1 Ãâ·Â*/
+/* popì„ ì…ë ¥í•˜ë©´ ê·¸ ìˆ˜ ì¶œë ¥í•˜ê³  ì •ìˆ˜ê°€ ì—†ìœ¼ë©´ -1 ì¶œë ¥*/
 void Pop(Queue *pq);
 
-/* Å¥¿¡ µé¾îÀÖ´Â Á¤¼ö °¹¼ö Ãâ·Â*/
+/* íì— ë“¤ì–´ìˆëŠ” ì •ìˆ˜ ê°¯ìˆ˜ ì¶œë ¥*/
 void Size(Queue *pq);
 
-/* ºñ¾îÀÖÀ¸¸é 1 Ãâ·Â, ¾Æ´Ï¸é 0 Ãâ·Â*/
+/* ë¹„ì–´ìˆìœ¼ë©´ 1 ì¶œë ¥, ì•„ë‹ˆë©´ 0 ì¶œë ¥*/
 void Empty(Queue *pq);
 
-/* Á¦ÀÏ ¾Õ¿¡ ÀÖ´Â ÀÖ´Â Á¤¼ö Ãâ·Â, ¾øÀ¸¸é -1 Ãâ·Â */
+/* ì œì¼ ì•ì— ìˆëŠ” ìˆëŠ” ì •ìˆ˜ ì¶œë ¥, ì—†ìœ¼ë©´ -1 ì¶œë ¥ */
 void Front(Queue *pq);
 
-/* Á¦ÀÏ µÚ¿¡ ÀÖ´Â ÀÖ´Â Á¤¼ö Ãâ·Â, ¾øÀ¸¸é -1 Ãâ·Â */
+/* ì œì¼ ë’¤ì— ìˆëŠ” ìˆëŠ” ì •ìˆ˜ ì¶œë ¥, ì—†ìœ¼ë©´ -1 ì¶œë ¥ */
 void Back(Queue *pq);
 
 main() {
@@ -53,17 +53,17 @@ main() {
 	Data tempdata;
 
 	scanf("%d", &num);
-	getchar();          // ±×´ÙÀ½ gets°¡ ÀÖÀ»¶§¿¡´Â ¿£ÅÍÅ°¸¦ ÀÎ½Ä¸øÇÏ´Ï±î getchar ³Ö¾îÁà¾ß ÇÔ.
+	getchar();          // ê·¸ë‹¤ìŒ getsê°€ ìˆì„ë•Œì—ëŠ” ì—”í„°í‚¤ë¥¼ ì¸ì‹ëª»í•˜ë‹ˆê¹Œ getchar ë„£ì–´ì¤˜ì•¼ í•¨.
 
 	while(i!=num)
 	{
 	//	fflush(stdin);
 		gets(command);
 		len = strlen(command);
-		if (!strncmp(command, "push", 4)) // push¶ó¸é
+		if (!strncmp(command, "push", 4)) // pushë¼ë©´
 		{
 			k = 0;
-			memset(c_buffer, NULL, len);  // Çàº¹ÇÑ ÇÔ¼ö memset (ptr, value to initialize, length)
+			memset(c_buffer, NULL, len);  // í–‰ë³µí•œ í•¨ìˆ˜ memset (ptr, value to initialize, length)
 
 			for (j = 5; command[j] != '\0'; j++)
 			{
