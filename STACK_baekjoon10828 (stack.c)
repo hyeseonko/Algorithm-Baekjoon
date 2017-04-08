@@ -1,0 +1,67 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include "stack.h"
+
+/*
+void showMenu() {
+	puts(" 1. push X");
+	puts(" 2. pop");
+	puts(" 3. size");
+	puts(" 4. empty");
+	puts(" 5. top");
+}
+*/
+
+/* Stack을 초기화함 */
+void Sinit(Stack *pstack) {
+	pstack->head = NULL;
+	pstack->scount = 0;
+}
+
+/* push X를 입력하면 넣어짐 */
+void Push(Stack *pstack, Data data) {
+	Node *newnode = (Node*)malloc(sizeof(Node));
+	newnode->next = pstack->head;
+	pstack->head = newnode;
+	newnode->data = data;
+	(pstack->scount)++;
+}
+
+/* pop을 입력하면 그 수 출력하고 정수가 없으면 -1 출력*/
+void Pop(Stack *pstack) {
+	if (pstack->head == NULL){
+		puts("Stack Memory Error!");
+		printf("-1\n");
+		//return; 굳이 필요없을것같음.
+	}
+	else {
+		Node *rnode = pstack->head;
+		printf("%d\n", rnode->data);
+		pstack->head = rnode->next;
+		free(rnode);
+		pstack->scount--;
+	}
+}
+
+/* 스택에 들어있는 정수 갯수 출력*/
+void Size(Stack *pstack) {
+	printf("%d\n", pstack->scount);
+}
+
+/* 비어있으면 1 출력, 아니면 0 출력*/
+void Empty(Stack *pstack) {
+	if (pstack->head == NULL) puts("1");
+	else puts("0");
+}
+
+/* 제일 위에 있는 정수 출력, 없으면 -1 출력 */
+void Top(Stack *pstack) {
+	if (pstack->head == NULL)
+	{
+		puts("-1");
+	}
+	else {
+		printf("%d\n", pstack->head->data);
+	}
+}
