@@ -1,2 +1,6 @@
 # Pusuit_of_Happiness
-All the coding sources I tried in Baekjoon and Codeground.etc
+Algorithm study [2017-04 ~ Present]
+
+2017-04-08
+1. Stack (10828)
+2. Queue (10845)
