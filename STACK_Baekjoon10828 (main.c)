@@ -11,8 +11,8 @@ void main(){
 	char command[10000];
 	char c_buffer[5]; 
 	int i, j, k;
-	int len; 
-	int idx; 
+//	int len; 
+//	int idx; 
 	Data tempdata;
 
 	scanf("%d", &num);
@@ -21,11 +21,11 @@ void main(){
 	for (i = 0; i < num; i++)
 	{
 		gets(command);
-		len = strlen(command);
+//		len = strlen(command);
 		if (!strncmp(command,"push",4)) // push라면
 		{
 			k = 0;
-			memset(c_buffer, NULL, len);             // 행복한 함수 memset (ptr, value to initialize, length)
+			memset(c_buffer, NULL, 5);             // 행복한 함수 memset (ptr, value to initialize, length)
 
 			for (j = 5; command[j] != '\0'; j++)
 			{
