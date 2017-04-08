@@ -1,0 +1,37 @@
+#ifndef __STACK_H__
+#define __STACK_H__
+
+typedef int Data; //Data의 자료형이 나중에 바뀔 것을 대비하여 이 문장하나만 바꿔도 되니까.
+
+typedef struct node {
+	Data data;
+	struct node* next;
+}Node;
+
+typedef struct {
+	Node* head;
+	int scount;
+}Stack;
+
+/* 명령어의 종류 메뉴를 보여줌 */
+//void showMenu();
+
+/* Stack을 초기화함 */
+void Sinit(Stack *pstack);
+
+/* push X를 입력하면 넣어짐 */
+void Push(Stack *pstack, Data data);
+
+/* pop을 입력하면 그 수 출력하고 정수가 없으면 -1 출력*/
+void Pop(Stack *pstack);
+
+/* 스택에 들어있는 정수 갯수 출력*/
+void Size(Stack *pstack);
+
+/* 비어있으면 1 출력, 아니면 0 출력*/
+void Empty(Stack *pstack);
+
+/* 제일 위에 있는 정수 출력, 없으면 -1 출력 */
+void Top(Stack *pstack);
+
+#endif
