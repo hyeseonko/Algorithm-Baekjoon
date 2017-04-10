@@ -30,16 +30,16 @@ void checkRight(char *str, int length)
 
 int main()
 {
-	char command[31];      // ÀÔ·Â ¹ŞÀ» º¯¼ö
+	char command[31];      // ì…ë ¥ ë°›ì„ ë³€ìˆ˜
 	int len;
 	int temp1, temp2;
-	int result = 0;        // ÃÖÁ¾ ¿øÇÏ´Â °á°ú °ª
+	int result = 0;        // ìµœì¢… ì›í•˜ëŠ” ê²°ê³¼ ê°’
 	stack<int> st;        // Stack 
 
 	scanf("%s", command);
 	len = strlen(command);
 
-	checkRight(command, len);  // ¿Ã¹Ù¸¥ ¹®ÀÚ¿­ÀÎÁö °Ë»ç
+	checkRight(command, len);  // ì˜¬ë°”ë¥¸ ë¬¸ìì—´ì¸ì§€ ê²€ì‚¬
 
 	for (int i = 0; i < len; i++)
 	{		
