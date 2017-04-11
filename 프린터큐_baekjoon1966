@@ -31,7 +31,7 @@ int main()
 	int result;
 	queue <pair <int, int>> q;
 
-	scanf("%d", &test_case);   // Test_case È½¼ö
+	scanf("%d", &test_case);   // Test_case íšŸìˆ˜
 	
 	for (int i = 1; i <= test_case; i++)
 	{
@@ -46,14 +46,14 @@ int main()
 
 		while (!q.empty())
 		{
-			if (!isThereBiggerOne(q))      // q.front()°¡ Á¦ÀÏ Å©¸é
+			if (!isThereBiggerOne(q))      // q.front()ê°€ ì œì¼ í¬ë©´
 			{
 				result++;
 				if (q.front().second == idx) 	break;
 				q.pop();
 			}
 
-			else {                  // q.front()º¸´Ù Å« °ÍÀÌ Á¸ÀçÇÏ¸é.
+			else {                  // q.front()ë³´ë‹¤ í° ê²ƒì´ ì¡´ìž¬í•˜ë©´.
 				q.push(q.front());
 				q.pop();
 			}
