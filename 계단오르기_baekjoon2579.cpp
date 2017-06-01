@@ -29,7 +29,7 @@ int main()
 /*
 	USING DYNAMIC PROGRAMMING
 	THE TRICKY PART WAS CONSIDERING 1-1-1 STEP.
-	To solved this, I considered not only in two consecutive ones, but three consecutives.
+	To solved this, I considered not in two consecutive ones, but three consecutives.
 	
 	To reach dp[x], there are two ways to go there
 	1) dp[x-2] + two steps = dp[x]
