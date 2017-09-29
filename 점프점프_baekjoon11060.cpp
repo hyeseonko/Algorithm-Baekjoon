@@ -1,49 +1,42 @@
 /*
 	TITLE: JUMP JUMP
 	BAEKJOON 11060
-	CATEGORY: DP
-	DATE: 2017-06-19
+	CATEGORY: BFS
+	DATE: 2017-09-29
 */
+
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <vector>
-#include <algorithm> //sort
+#include <queue>
 using namespace std;
 
-int dp[1000];
-vector <int> v;
+int arr[1000];
+bool visited[1000];
+queue <pair<int, int>> q;
 
 int main()
 {
-	int arr[1000];
 	int N; scanf("%d", &N);
 	for (int i = 0; i < N; i++) scanf("%d", &arr[i]);
-	if (arr[0] == 0)
+	q.push({ 0,0 });
+	visited[0] = true;
+	while (!q.empty())
 	{
-		if (N == 1) puts("0");
-		else puts("-1");
-	}
-	else
-	{
-		dp[0] = 0;
-		for (int i = 1; i < N; i++)
-		{
-			for (int j = i - 1; j >= 0&& j >= i - 100; j--)
-			{
-				if (arr[j] >= (i - j) && dp[j] >= 0)
-				{
-					v.push_back(dp[j] + 1);
-				}
-			}
-			if (v.empty()) dp[i] = -1;
-			else
-			{
-				sort(v.begin(), v.end());
-				dp[i] = v.front();
-			}
-			v.clear();
+		int qx = q.front().first;
+		int qc = q.front().second;
+		q.pop();
+		if (qx == N - 1) {
+			printf("%d\n", qc);
+			return 0;
 		}
-		printf("%d\n", dp[N - 1]);
+		for (int i = 1; i <= arr[qx]; i++)
+		{
+			if (!visited[qx + i])
+			{
+				q.push({ qx + i, qc + 1 });
+				visited[qx + i] = true;
+			}
+		}
 	}
-	return 0;
+	puts("-1");	return 0;
 }
